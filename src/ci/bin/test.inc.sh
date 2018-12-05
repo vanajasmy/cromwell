@@ -243,6 +243,8 @@ cromwell::private::create_centaur_variables() {
     if [ -z "${CROMWELL_BUILD_CENTAUR_TYPE-}" ]; then
         if [[ "${CROMWELL_BUILD_TYPE}" = centaurEngineUpgrade* ]]; then
             CROMWELL_BUILD_CENTAUR_TYPE="${CROMWELL_BUILD_CENTAUR_TYPE_ENGINE_UPGRADE}"
+        elif [[ "${CROMWELL_BUILD_TYPE}" = centaurPapiUpgrade* ]]; then
+            CROMWELL_BUILD_CENTAUR_TYPE="${CROMWELL_BUILD_CENTAUR_TYPE_PAPI_UPGRADE}"
         else
             CROMWELL_BUILD_CENTAUR_TYPE="${CROMWELL_BUILD_CENTAUR_TYPE_STANDARD}"
         fi
