@@ -22,7 +22,7 @@ before_cache:
 env:
   matrix:
     # Setting this variable twice will cause the 'script' section to run twice with the respective env var invoked
-    - BUILD_TYPE=centaurPapiUpgrade
+    - BUILD_TYPE=centaurPapiUpgradePapiV2
     # - BUILD_TYPE=centaurAws
     # - BUILD_TYPE=centaurBcs
     # - BUILD_TYPE=centaurEngineUpgradeLocal

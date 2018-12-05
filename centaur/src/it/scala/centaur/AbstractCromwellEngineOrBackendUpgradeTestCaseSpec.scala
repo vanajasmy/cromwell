@@ -78,5 +78,3 @@ object AbstractCromwellEngineOrBackendUpgradeTestCaseSpec {
     } yield ()
   }
 }
-
-
