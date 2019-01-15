@@ -1,5 +1,6 @@
 package cromwell.backend.google.pipelines.common
 
+import com.typesafe.scalalogging.LazyLogging
 import cromwell.backend.BackendConfigurationDescriptor
 import cromwell.backend.google.pipelines.common.api.PipelinesApiFactoryInterface
 import cromwell.backend.google.pipelines.common.authentication.PipelinesApiDockerCredentials
@@ -12,7 +13,7 @@ import spray.json._
 class PipelinesApiConfiguration(val configurationDescriptor: BackendConfigurationDescriptor,
                                 val genomicsFactory: PipelinesApiFactoryInterface,
                                 val googleConfig: GoogleConfiguration,
-                                val jesAttributes: PipelinesApiAttributes) extends DefaultJsonProtocol {
+                                val jesAttributes: PipelinesApiAttributes) extends DefaultJsonProtocol with LazyLogging {
 
   val jesAuths = jesAttributes.auths
   val root = configurationDescriptor.backendConfig.getString("root")
@@ -21,6 +22,8 @@ class PipelinesApiConfiguration(val configurationDescriptor: BackendConfiguratio
 
   val dockerCredentials = {
     BackendDockerConfiguration.build(configurationDescriptor.backendConfig).dockerCredentials map { creds =>
+      logger.error(creds.toString)
+      logger.error(googleConfig.toString)
       PipelinesApiDockerCredentials.apply(creds, googleConfig)
     }
   }
