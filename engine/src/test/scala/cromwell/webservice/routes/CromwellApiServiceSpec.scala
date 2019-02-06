@@ -524,7 +524,7 @@ object CromwellApiServiceSpec {
         val response = WorkflowQuerySuccess(WorkflowQueryResponse(List(WorkflowQueryResult(ExistingWorkflowId.toString,
           None, Some(WorkflowSucceeded.toString), None, None, None, labels, parentWorkflowId)), 1), None)
         sender ! response
-      case ValidateWorkflowId(id) =>
+      case ValidateWorkflowIdInMetadata(id) =>
         if (RecognizedWorkflowIds.contains(id)) sender ! MetadataService.RecognizedWorkflowId
         else sender ! MetadataService.UnrecognizedWorkflowId
       case GetCurrentStatus =>
