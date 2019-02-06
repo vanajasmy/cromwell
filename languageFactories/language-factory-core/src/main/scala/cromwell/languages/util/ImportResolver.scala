@@ -129,7 +129,9 @@ object ImportResolver {
         s"relative to directory [...]/$shortPathToDirectory (escaping allowed)"
     }
 
-    override def close(): Try[Unit]= Try(directory.delete(swallowIOExceptions = true))
+    override def close(): Try[Unit] =
+//      Try(directory.delete(swallowIOExceptions = true))
+      Success(())
   }
 
   def zippedImportResolver(zippedImports: Array[Byte], workflowId: WorkflowId): ErrorOr[DirectoryResolver] = {
