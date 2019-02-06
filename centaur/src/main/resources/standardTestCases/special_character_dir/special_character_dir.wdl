@@ -22,8 +22,6 @@ task mkdir {
 workflow empty_dir_workflow {
     call mkdir as mkdir_normal_empty { input: dir_name = 'empty_normal_dir', empty = true }
     call mkdir as mkdir_dollar_empty { input: dir_name = 'empty_$dollar_dir', empty = true }
-    call mkdir as mkdir_space_empty { input: dir_name = 'empty_space dir', empty = true }
     call mkdir as mkdir_normal_nonempty { input: dir_name = 'nonempty_normal_dir', empty = false }
     call mkdir as mkdir_dollar_nonempty { input: dir_name = 'nonempty_$dollar_dir', empty = false }
-    call mkdir as mkdir_space_nonempty { input: dir_name = 'nonempty_space dir', empty = false }
 }
